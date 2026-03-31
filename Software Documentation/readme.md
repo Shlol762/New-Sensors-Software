@@ -1,8 +1,24 @@
 # Rocketry Flight Computer List
 
-## Version 2.5 
+## Version 3
 
-Current Flight Computer version
+Current flight computer in use. Development in progress.
+
+### Changes from V2.5:
+
+*   **Primary change only:** Altitude/barometric sensor path was swapped from BMP280 to BMP581 (`Adafruit_BMP5xx`-based driver).
+*   **No major control-logic improvement claims:** PID, Kalman, and recovery architecture are otherwise carried forward from V2.5.
+
+#### Issues:
+
+*   Telemetry/transmission logic is scaffolded but not yet implemented.
+*   Data logging is still not included.
+*   Some thresholds are still marked for tuning and need full flight validation.
+*   Servo-axis frame mapping still requires final documentation to avoid integration mistakes.
+
+
+
+## Version 2.5 
 
 ### Features:
 
