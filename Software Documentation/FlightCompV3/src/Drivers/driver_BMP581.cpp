@@ -30,14 +30,21 @@ bool Driver_BMP581::init() {
     
     // Calculate ground reference pressure by averaging multiple readings
     grndRefPres = 0;
+    int successCount = 0;
     for(int i=0; i<10; i++) {
         if (bmp.performReading()) {
             grndRefPres += bmp.pressure; // bmp pressure is already in hPa
+            successCount++;
         }
         delay(10);
     }
 
-    grndRefPres /= 10.0; // Average the readings
+    if (successCount > 0) {
+        grndRefPres /= static_cast<float>(successCount); // Average the successful readings
+    } else {
+        // Fallback to standard sea-level pressure if no readings succeeded
+        grndRefPres = 1013.25f;
+    }
     Serial.print("Ground Pressure: ");
     Serial.print(grndRefPres);
     Serial.println(" hPa");
