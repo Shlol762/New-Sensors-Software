@@ -8,7 +8,7 @@ FlightCompV3 is a modular, PID-controlled flight computer designed for model roc
 
 * **Active Stabilization:** Uses a PID control loop to actuate servos for flight correction.
 * **Sensor Fusion:** Employs Kalman filters to process raw IMU data (MPU6050) for stable orientation estimates.
-* **Altitude Sensing:** Utilizes a BMP280 barometer for accurate real-time altitude tracking.
+* **Altitude Sensing:** Utilizes a BMP581 barometer for accurate real-time altitude tracking.
 * **Automated Recovery:** Detects apogee based on altitude and acceleration triggers to deploy a parachute via servo.
 * **Modular Architecture:** Clean separation between configuration, hardware drivers, and control logic.
 
@@ -26,8 +26,8 @@ FlightCompV3/
     │   ├── kalman.cpp
     │   └── kalman.h
     ├── Drivers/
-    │   ├── driver_BMP280.cpp
-    │   ├── driver_BMP280.h
+    │   ├── driver_BMP581.cpp
+    │   ├── driver_BMP581.h
     │   ├── driver_MPU6050.cpp
     │   └── driver_MPU6050.h
     └── libs/
@@ -49,8 +49,8 @@ The project is natively configured for **PlatformIO**, which provides the best d
 2.  **Install PlatformIO**: Go to the Extensions view in VS Code and search for "PlatformIO IDE". Install it.
 3.  **Open Project**:
     * Click on the PlatformIO icon in the sidebar.
-    * Select "Open Project" and navigate to the `FlightCompV2_5` directory.
-4.  **Build & Upload**: Use the PlatformIO toolbar at the bottom of the window (Checkmark for Build, Arrow for Upload). PlatformIO will automatically download the necessary toolchains and libraries (Adafruit BMP280, etc.) based on the `platformio.ini` file.
+    * Select "Open Project" and navigate to the `FlightCompV3` directory.
+4.  **Build & Upload**: Use the PlatformIO toolbar at the bottom of the window (Checkmark for Build, Arrow for Upload). PlatformIO will automatically download the necessary toolchains and libraries (Adafruit BMP581, etc.) based on the `platformio.ini` file.
 
 ### 2. Arduino IDE
 
@@ -64,8 +64,8 @@ While PlatformIO is recommended, you can still develop using the Arduino IDE (ve
 3.  **Install the Teensy Core**: Open the Boards Manager (the board icon in the left sidebar), search for **Teensy**, and click "Install" on the package by Paul Stoffregen.
 4.  **Install Libraries**: You must manually install the external dependencies listed in `platformio.ini` via the Library Manager (`Sketch -> Include Library -> Manage Libraries...`)
 5.  **Handle Project Structure**: The Arduino IDE strictly requires the main sketch file to share the exact same name as its parent folder. To compile this version:
-    * Create a new folder named `FlightCompV2_5`.
-    * Rename `FlightCompV2_5.cpp` to `FlightCompV2_5.ino` and place it inside that new folder.
+    * Create a new folder named `FlightCompV3`.
+    * Rename `FlightCompV3.cpp` to `FlightCompV3.ino` and place it inside that new folder.
     * Move the entire `src/` directory into that same folder alongside the `.ino` file.
 6.  **Configure and Upload**: 
     * Go to `Tools -> Board -> Teensy` and select **Teensy 4.1**.
